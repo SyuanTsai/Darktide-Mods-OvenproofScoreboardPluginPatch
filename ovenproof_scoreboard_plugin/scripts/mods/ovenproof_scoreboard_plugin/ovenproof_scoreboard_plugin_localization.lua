@@ -360,10 +360,11 @@ local localization = {
     -- @backup158: sai google translated these languages: ru, pt-br
     separate_companion_damage = {
         en = "Companion Damage",
-		    ru = "Использовать отдельные строки",
+		ru = "Использовать отдельные строки",
+        ["zh-cn"] = "同伴伤害",
         ["zh-tw"] = "電子獒犬傷害",
-        ["zh-tw"] = "機械戰犬傷害",
-		    ["pt-br"] = "Dano do Companheiro",
+        -- ["zh-tw"] = "機械戰犬傷害",
+		["pt-br"] = "Dano do Companheiro",
     },
     -- @backup158: sai google translated these languages: ru, pt-br
     separate_companion_damage_description = {
