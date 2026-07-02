@@ -1,5 +1,6 @@
 # 1.13.7 - 2026-06-30
 - Updated `zh-cn` localization. Thanks DingXiang223!
+- Updated `zh-tw` localization. Thanks SyuanTsai!
 
 # 2026-06-26
 v1.13.6
