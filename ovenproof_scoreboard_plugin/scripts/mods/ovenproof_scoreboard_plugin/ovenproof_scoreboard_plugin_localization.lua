@@ -148,7 +148,7 @@ local localization = {
         ["zh-tw"] = "每當使用未分類的傷害類型時，請在聊天中顯示消息。請報告這些！",
         ["pt-br"] = "Exibir mensagens no chat quando um tipo de dano não categorizado for usado. Por favor, reporte esses casos!",
     },
-    -- @backup158: human translators need to review:
+    -- @backup158: Machine translation used. Verification required:
     --  Please verify: ru
     warning_chat_debug_messages = {
         en = "To disable this message, go to Mod Options --> OvenProof's Scoreboard --> Disable \"Enable error messages\"",
