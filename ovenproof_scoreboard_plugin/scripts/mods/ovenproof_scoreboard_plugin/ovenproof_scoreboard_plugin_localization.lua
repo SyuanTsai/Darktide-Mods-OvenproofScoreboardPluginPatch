@@ -120,7 +120,8 @@ local localization = {
     -- --------
     -- Error Messages
     -- --------
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     error_scoreboard_missing = {
         en = "Scoreboard required! This is an add-on plugin to it!",
 		ru = "Требуется табло! Это плагин для него!",
@@ -128,7 +129,8 @@ local localization = {
         ["zh-tw"] = "需要記分板！這是它的一個附加插件！",
 		["pt-br"] = "Scoreboard mod é necessário! Este é um plugin addon!",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     enable_debug_messages = {
         en = "Enable error messages",
 		ru = "Включить сообщения об ошибках",
@@ -136,7 +138,8 @@ local localization = {
         ["zh-tw"] = "啟用錯誤訊息",
         ["pt-br"] = "Ativar Mensagens de Erro",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     enable_debug_messages_description = {
         en = "Show messages in chat whenever an uncategorized damage type is used. Please report these!",
 		ru = "Показывать сообщения в чате при использовании некатегоризированного типа повреждения. Пожалуйста, сообщайте о таких случаях!",
@@ -144,7 +147,8 @@ local localization = {
         ["zh-tw"] = "每當使用未分類的傷害類型時，請在聊天中顯示消息。請報告這些！",
         ["pt-br"] = "Exibir mensagens no chat quando um tipo de dano não categorizado for usado. Por favor, reporte esses casos!",
     },
-    -- @backup158: human translators need to review: ru
+    -- @backup158: human translators need to review:
+    --  Please verify: ru
     warning_chat_debug_messages = {
         en = "To disable this message, go to Mod Options --> OvenProof's Scoreboard --> Disable \"Enable error messages\"",
         ["zh-tw"] = "要停用此訊息，請前往 Mod 選項 --> OvenProof 記分板插件 --> 停用「啟用錯誤訊息」",
@@ -155,7 +159,8 @@ local localization = {
     -- --------
     -- Categorizing Rows
     -- --------
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     row_categories_group = {
         en = "Scoreboard Row Categories",
 		ru = "Категории строк табло",
@@ -305,7 +310,8 @@ local localization = {
     -- --------
     -- Ammo Tracking messages
     -- --------
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     ammo_tracking_group = {
         en = "Ammo Tracking",
 		ru = "Отслеживание боеприпасов",
@@ -313,7 +319,8 @@ local localization = {
         ["zh-tw"] = "彈藥追蹤",
 		["pt-br"] = "Rastreamento de munição",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_ammo_crate_waste = {
         en = "Track Ammo Crate waste",
 		ru = "Отходы ящиков с боеприпасами для треков",
@@ -321,7 +328,8 @@ local localization = {
         ["zh-tw"] = "追蹤彈藥箱浪費",
 		["pt-br"] = "Desperdício de caixa de munição",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_ammo_crate_in_percentage = {
         en = "Include Ammo Crates in total percentage of Ammo picked up",
 		ru = "Включить ящики с боеприпасами в общий процент подобранных боеприпасов",
@@ -333,7 +341,8 @@ local localization = {
     -- Attack Categorization
     -- Mainly for Blitz
     -- --------
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     attack_tracking_group = {
         en = "Attack Report Tracking",
 		ru = "Отслеживание отчетов об атаках",
@@ -341,7 +350,8 @@ local localization = {
         ["zh-tw"] = "攻擊報告追蹤",
 		["pt-br"] = "Relatório de ataque",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     attack_tracking_separate_rows = {
         en = "Use Separate Rows",
 		ru = "Использовать отдельные строки",
@@ -349,7 +359,8 @@ local localization = {
         ["zh-tw"] = "使用獨立行",
 		["pt-br"] = "Use linhas separadas",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     attack_tracking_separate_rows_description = {
         en = "ROW VISIBILITY CHANGES WILL NOT TAKE EFFECT UNTIL THE MAP CHANGES (such as by going from Mourningstar to Psykhanium)\nCreates a separate row to track these values.",
 		ru = "ИЗМЕНЕНИЯ ВИДИМОСТИ СТРОК НЕ ВСТУПЯТ В СИЛУ, ПОКА КАРТА НЕ ИЗМЕНИТСЯ (например, при переходе от Mourningstar к Psykhanium)\nСоздает отдельную строку для отслеживания этих значений",
@@ -357,7 +368,8 @@ local localization = {
         ["zh-tw"] = "ROW VISIBILITY 的變更要在地圖更換後才會生效（例如，從Mourningstar到靈能室）\n此選項會建立一個獨立的列，用來追蹤相關的數值。",
 		["pt-br"] = "A alteração na visibilidade dos separadores só terá efeito quando o mapa for alterado (por exemplo, ao passar de Mourningstar para Psykhanium).\nCria uma linha separada para rastrear esses valores",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     separate_companion_damage = {
         en = "Companion Damage",
 		ru = "Использовать отдельные строки",
@@ -366,7 +378,8 @@ local localization = {
         -- ["zh-tw"] = "機械戰犬傷害",
 		["pt-br"] = "Dano do Companheiro",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     separate_companion_damage_description = {
         en = "Choose which row Companion Damage counts towards. \"Companion\" is its own row, which will be hidden if one of the other options is chosen.",
 		ru = "Выберите, в какой строке учитывается урон от компаньонов. «Компаньон» — это отдельная строка, которая будет скрыта, если выбран один из других вариантов.",
@@ -374,7 +387,8 @@ local localization = {
         ["zh-tw"] = "選擇「電子獒犬傷害」要計入哪一個列。「電子獒犬」本身是一個獨立的列；若選擇其他選項，該列將會被隱藏。",
 		["pt-br"] = "Escolha em qual linha o dano causado pelo companheiro será contabilizado. \"Companheiro\" é uma linha separada, que ficará oculta se uma das outras opções for selecionada.",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     warning_companion_blitz = {
         en = "You have set Companion Damage to be tracked under Blitz Damage, but you have not enabled the Blitz Damage row. This means Companion Damage will not be visible! It will still count towards total damage.\nIf that is intentional, you can disable this warning in the Mod Options.",
 		ru = "Вы включили отслеживание урона от напарников в разделе «Урон от напарников», но не включили строку «Урон от напарников». Это означает, что урон от напарников не будет отображаться! Он всё равно будет учитываться в общем уроне.\nЕсли это сделано намеренно, вы можете отключить это предупреждение в настройках мода.",
@@ -382,7 +396,8 @@ local localization = {
         ["zh-tw"] = "您已將電子獒犬傷害設定為統計在爆發傷害（Blitz Damage）中，但您尚未啟用爆發傷害列。這表示電子獒犬傷害將無法顯示！但仍會計入總傷害。\n如果這是您預期的行為，您可以在模組選項中停用此警告。",
 		["pt-br"] = "Você configurou o Dano de Companheiro para ser rastreado em Dano de Ataque Relâmpago, mas não habilitou a linha Dano de Ataque Relâmpago. Isso significa que o Dano de Companheiro não será visível! Ele ainda será contabilizado no dano total.\nSe isso for intencional, você pode desativar este aviso nas Opções do Mod.",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     enable_companion_blitz_warning = {
         en = "Enable warning for untracked Companion Damage",
 		ru = "Включить предупреждение о неотслеживаемом повреждении компаньона",
@@ -390,7 +405,8 @@ local localization = {
         ["zh-tw"] = "啟用未追蹤電子獒犬傷害的警告",
 		["pt-br"] = "Ativar aviso para danos não rastreados em companheiros.",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     enable_companion_blitz_warning_description = {
         en = "Shows warning when counting Companion Damage as Blitz Damage if there is no row displayed for Blitz Damage.",
 		ru = "Выводит предупреждение при подсчете урона от компаньонов как урона от блица, если для урона от блица не отображается строка.",
@@ -398,7 +414,8 @@ local localization = {
         ["zh-tw"] = "當電子獒犬傷害被計為爆發傷害、但未顯示爆發傷害列時，顯示警告。",
 		["pt-br"] = "Exibe um aviso ao contabilizar o dano de companheiro como dano de ataque relâmpago se não houver uma linha exibida para dano de Blitz.",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     separate_companion_damage_hide_regardless = {
         en = "Always Hide Companion Damage Row",
 		ru = "Всегда скрывать строку урона компаньона",
@@ -414,7 +431,8 @@ local localization = {
         ["zh-tw"] = "電子獒犬", 
         ["pt-br"] = "Companheiro", 
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_blitz_damage = {
         en = "Blitz Damage",
 		ru = "Урон от молниеносного удара", 
@@ -422,7 +440,8 @@ local localization = {
         ["zh-tw"] = "閃擊傷害",
 		["pt-br"] = "Dano Blitz",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_blitz_damage_description = {
         en = "If disabled, Blitz Damage counts as Ranged Damage.",
 		ru = "Если отключено, урон от молниеносной атаки считается уроном от дальнего боя.", 
@@ -430,7 +449,8 @@ local localization = {
         ["zh-tw"] = "若停用，閃擊傷害將被視為遠程傷害。",
 		["pt-br"] = "Se desativado, o dano do Blitz conta como dano à distância.",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_blitz_wr = {
         en = "Track Blitz Weakspot Rate",
 		ru = "Уровень уязвимости Blitz", 
@@ -438,7 +458,8 @@ local localization = {
         ["zh-tw"] = "追蹤閃擊弱點命中率",
 		["pt-br"] = "Taxa de pontos fracos do Blitz",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_blitz_cr = {
         en = "Track Blitz Critical Strike Rate",
 		ru = "Частота критических ударов Blitz", 
@@ -446,7 +467,8 @@ local localization = {
         ["zh-tw"] = "追蹤閃擊暴擊率",
 		["pt-br"] = "Taxa de acerto crítico do Blitz",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     attack_tracking_hitrate = {
         en = "Hitrate Calculations",
 		ru = "Расчеты хитрейта", 
@@ -454,7 +476,8 @@ local localization = {
         ["zh-tw"] = "命中率計算",
 		["pt-br"] = "Cálculos de taxa de acerto",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     explosions_affect_ranged_hitrate = {
         en = "Explosions affect Ranged Hitrate",
 		ru = "Взрывы влияют на эффективность дальнего боя", 
@@ -462,7 +485,8 @@ local localization = {
         ["zh-tw"] = "爆炸影響遠程命中率",
 		["pt-br"] = "Explosões afetam a taxa de acerto à distância",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     explosions_affect_melee_hitrate = {
         en = "Explosions affect Melee Hitrate",
 		ru = "Взрывы влияют на меткость в ближнем бою", 
@@ -473,7 +497,8 @@ local localization = {
     -- --------
     -- Defense Tracking
     -- --------
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     defense_tracking_group = {
         en = "Defense Report Tracking",
 		ru = "Отслеживание отчетов Министерства обороны", 
@@ -481,7 +506,8 @@ local localization = {
         ["zh-tw"] = "防禦報告追蹤",
 		["pt-br"] = "Acompanhamento de relatórios de defesa",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     disabled_tracking_group = {
         en = "Track Events as a Disabled State",
 		ru = "Отслеживать события в состоянии «отключено»", 
@@ -489,7 +515,8 @@ local localization = {
         ["zh-tw"] = "將事件視為癱瘓狀態",
 		["pt-br"] = "Acompanhe eventos como um estado com deficiência",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     disabled_tracking_group_description = {
         en = "When enabled, entering the described state will count as getting Disabled",
 		ru = "При включении переход в описанное состояние будет считаться отключением.", 
@@ -497,7 +524,8 @@ local localization = {
         ["zh-tw"] = "啟用後，進入描述的狀態將被視為遭受癱瘓。",
 		["pt-br"] = "Quando ativado, entrar no estado descrito será considerado como ficar desativado.",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_catapulted = {
         en = "Catapulted by Knockback",
 		ru = "Катапультировался отбрасыванием", 
@@ -505,7 +533,8 @@ local localization = {
         ["zh-tw"] = "被擊退彈飛",
 		["pt-br"] = "Catapultado por Repulsão",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_mutant_charged = {
         en = "Charged by a Mutant",
 		ru = "Нападение мутанта", 
@@ -513,7 +542,8 @@ local localization = {
         ["zh-tw"] = "被變種衝撞",
 		["pt-br"] = "Acusado por um mutante",
     },
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     track_warp_grabbed = {
         --en = "Grabbed by a Daemonhost",
         en = "Warp Grabbed",
@@ -603,7 +633,8 @@ local localization = {
     },
     -- @backup158: I split these 2 messages up, as well as the localizations
     --   localizers please verify that I used the correct words
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used:
+    --  Please verify: ru
     ammo_messages = {
         en = "Messages - Ammo pickups",
 		ru = "Сообщения - Подбор боеприпасов",
@@ -622,7 +653,8 @@ local localization = {
     -- Reusable labels
     -- ----------------
     -- Settings
-    -- @backup158: sai google translated these languages: ru
+    -- @backup158: Machine translation used. Verification required:
+    --  Please verify: ru
     setting_only_in_havoc = {
         en = "Only when playing Havoc",
 		ru = "Только при игре в Havoc",
