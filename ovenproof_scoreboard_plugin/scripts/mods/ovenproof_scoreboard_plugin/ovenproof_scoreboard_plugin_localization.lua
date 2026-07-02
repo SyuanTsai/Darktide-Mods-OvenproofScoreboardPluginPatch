@@ -8,7 +8,8 @@ local mod = get_mod("ovenproof_scoreboard_plugin")
 local languages = {"en","ru","zh-cn","zh-tw","pt-br",}
 -- ###############################################################################################################
 -- If your language is already translated:
---      If you have time, please search through this page for "google translate" to correct those
+--      If you have time, please search through this page for "Please verify: <language_code>" to correct those
+--          E.g. "Please verify: ru" or "Please verify: zh-tw"
 --          I tried to label as many of those as I could, but I didn't pay attention until recently, so I'm sure I missed some
 --          If that's too tedious, do not feel obligated to do it. We appreciate the help regardless!
 --      For those with missing localizations that I noticed, I put a comment with a blank line for the languages
