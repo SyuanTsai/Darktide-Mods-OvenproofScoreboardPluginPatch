@@ -300,10 +300,10 @@ local replace_row_with_value = function(row, key_to_edit, value)
 	row[key_to_edit] = value
 end
 
-local replace_value_within_row_table = function(row, key_to_edit, value)
+local replace_value_within_row_table = function(row, key_to_edit, value, replacing_value)
 	for i = 1, #(row[key_to_edit]) do
 		if row[key_to_edit][i] == value then 
-			row[key_to_edit][i] = nil 
+			row[key_to_edit][i] = replacing_value or nil 
 		end
 	end
 end
