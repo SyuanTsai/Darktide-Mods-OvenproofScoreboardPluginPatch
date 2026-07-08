@@ -394,7 +394,7 @@ local localization = {
         en = "You have set Companion Damage to be tracked under Blitz Damage, but you have not enabled the Blitz Damage row. This means Companion Damage will not be visible! It will still count towards total damage.\nIf that is intentional, you can disable this warning in the Mod Options.",
 		ru = "Вы включили отслеживание урона от напарников в разделе «Урон от напарников», но не включили строку «Урон от напарников». Это означает, что урон от напарников не будет отображаться! Он всё равно будет учитываться в общем уроне.\nЕсли это сделано намеренно, вы можете отключить это предупреждение в настройках мода.",
         ["zh-cn"] = "您已将同伴伤害设置为在闪电战伤害下追踪，但您尚未启用闪电战伤害行。这意味着同伴伤害将不可见！但它仍会计入总伤害。\n如果您有意如此，可以在模组选项中禁用此警告。",
-        ["zh-tw"] = "您已將電子獒犬傷害設定為統計在爆發傷害（Blitz Damage）中，但您尚未啟用爆發傷害列。這表示電子獒犬傷害將無法顯示！但仍會計入總傷害。\n如果這是您預期的行為，您可以在模組選項中停用此警告。",
+        ["zh-tw"] = "您已將電子獒犬傷害設定為統計在爆發傷害（閃擊傷害）中，但您尚未啟用爆發傷害列。這表示電子獒犬傷害將無法顯示！但仍會計入總傷害。\n如果這是您預期的行為，您可以在模組選項中停用此警告。",
 		["pt-br"] = "Você configurou o Dano de Companheiro para ser rastreado em Dano de Ataque Relâmpago, mas não habilitou a linha Dano de Ataque Relâmpago. Isso significa que o Dano de Companheiro não será visível! Ele ainda será contabilizado no dano total.\nSe isso for intencional, você pode desativar este aviso nas Opções do Mod.",
     },
     -- @backup158: Machine translation used. Verification required:
@@ -412,7 +412,7 @@ local localization = {
         en = "Shows warning when counting Companion Damage as Blitz Damage if there is no row displayed for Blitz Damage.",
 		ru = "Выводит предупреждение при подсчете урона от компаньонов как урона от блица, если для урона от блица не отображается строка.",
         ["zh-cn"] = "如果闪电战伤害没有显示行，则在将同伴伤害计入闪电战伤害时显示警告。",
-        ["zh-tw"] = "當電子獒犬傷害被計為爆發傷害、但未顯示爆發傷害列時，顯示警告。",
+        ["zh-tw"] = "當電子獒犬傷害被計為閃擊傷害、但未顯示閃擊傷害列時，顯示警告。",
 		["pt-br"] = "Exibe um aviso ao contabilizar o dano de companheiro como dano de ataque relâmpago se não houver uma linha exibida para dano de Blitz.",
     },
     -- @backup158: Machine translation used. Verification required:
@@ -557,14 +557,14 @@ local localization = {
         en = "Hide Friendly Fire Rows",
 		-- ru = "", 
         ["zh-cn"] = "屏蔽友伤数据栏",
-        ["zh-tw"] = "不顯示友軍傷害",
+        ["zh-tw"] = "隱藏友軍傷害列",
 		-- ["pt-br"] = "",
     },
     option_hide_friendly_fire_description = {
         en = "Hides the friendly fire damage row and the allied shots blocked row. These are part of the Defense category.",
 		-- ru = "", 
         ["zh-cn"] = "隐藏友军伤害数据与友军子弹阻挡数据，两项数据均归属防御分类。",
-        ["zh-tw"] = "隱藏友軍傷害與子彈阻擋(防禦分類)",
+        ["zh-tw"] = "隱藏友軍傷害列和阻擋盟軍射擊列。這些是防禦類別的一部分。",
 		-- ["pt-br"] = "",
     },
     -- -----------
@@ -587,7 +587,7 @@ local localization = {
         en = "Weakspot and critical rates",
         ru = "Уязвимые места и критические показатели",
         ["zh-cn"] = "弱点和暴击率",
-        ["zh-tw"] = "弱點與爆擊率",
+        ["zh-tw"] = "弱點與致命一擊率",
         ["pt-br"] = "Taxas de Pontos Fracos e Críticos",
     },
     offense_tier_0 = {
@@ -660,7 +660,7 @@ local localization = {
         en = "Only when playing Havoc",
 		ru = "Только при игре в Havoc",
         ["zh-cn"] = "只有在玩 Havoc 时才会出现",
-        ["zh-tw"] = "只有在玩 Havoc 時才會出現",
+        ["zh-tw"] = "只有在玩浩劫時才會出現",
         ["pt-br"] = "Somente ao jogar Havoc",
     },
     -- Scoreboard Row Text
@@ -972,12 +972,12 @@ local localization = {
         en = {left = "Critical Rate", right = "[ Melee | Ranged ]",},
         ru = {left = "Крит. удары", right = "[Ближний/Дальний]",},
         ["zh-cn"] = {left = "暴击率", right = "[ 近战 | 远程 ]",},
-        ["zh-tw"] = { left = "爆擊率", right = "[ 近戰 | 遠程 ]",},
+        ["zh-tw"] = { left = "致命一擊率", right = "[ 近戰 | 遠程 ]",},
         ["pt-br"] = {left = "Taxa Crítica", right = "[Corpo a Corpo | Distância]",},
     },
     row_total_critical_rates_with_blitz = {
         en = {left = "Critical Rate", right = "[ Melee | Ranged | Blitz ]",},
-        ["zh-tw"] = { left = "爆擊率", right = "[ 近戰  |  遠程  |  閃擊 ]",},
+        ["zh-tw"] = { left = "致命一擊率", right = "[ 近戰  |  遠程  |  閃擊 ]",},
         -- ru = {left = "Крит. удары", right = "[Ближний/Дальний/]",},
         ["zh-cn"] = {left = "暴击率", right = "[ 近战 | 远程 | ]",},
         -- ["pt-br"] = {left = "Taxa Crítica", right = "[Corpo a Corpo | Distância | ]",},
@@ -1009,7 +1009,7 @@ local localization = {
         en = {left = "Critical Rate", right = "[ Bleeding | Burning ]",},
         ru = {left = "Крит. удары", right = "[Кровотечение/Горение]",},
         ["zh-cn"] = {left = "暴击率", right = "[ 流血 | 燃烧 ]",},
-        ["zh-tw"] = { left = "爆擊率", right = "[ 流血 | 燃燒 ]",},
+        ["zh-tw"] = { left = "致命一擊率", right = "[ 流血 | 燃燒 ]",},
         ["pt-br"] = {left = "Taxa Crítica", right = "[Sangramento | Queima]",},
     },
     row_bleeding_critical_rate = {
@@ -1030,7 +1030,7 @@ local localization = {
         en = {left = "Critical Rate", right = "[ Warpfire | Environment ]",},
         ru = {left = "Крит. удары", right = "[Варпогонь/Окружение]",},
         ["zh-cn"] = {left = "暴击率", right = "[ 灵魂之火 | 环境 ]",},
-        ["zh-tw"] = { left = "爆擊率", right = "[ 靈魂之火 | 環境 ]",},
+        ["zh-tw"] = { left = "致命一擊率", right = "[ 靈魂之火 | 環境 ]",},
         ["pt-br"] = {left = "Taxa Crítica", right = "[Warpfire | Ambiente]",},
     },
     row_warpfire_critical_rate = {
