@@ -1,6 +1,8 @@
 # 1.13.7 - 2026-06-30
 - Updated `zh-cn` localization. Thanks DingXiang223!
 - Updated `zh-tw` localization. Thanks SyuanTsai!
+- Refactored Scoreboard row access to use index instead of `ipairs` per [Fatshark's Lua optimization recommendations](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=prefer-numeric-for-loops-over-ipairs-to-iterate-over-arrays)
+- Changed `replace_value_within_row_table` to support using a new value instead of nil. Nothing changes functionally currently; this is for the future.
 
 # 2026-06-26
 v1.13.6

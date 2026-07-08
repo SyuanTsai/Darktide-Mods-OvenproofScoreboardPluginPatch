@@ -288,7 +288,8 @@ local function replace_registered_scoreboard_value(row_name, key_to_edit, functi
 	-- like why tf am i doing this O(N) when I could use a key access for constant time
 	-- scoreboard only runs with arrays for itself and the plugins, and adds the plugins to itself
 	-- adding a key messes up the order sorting, so my rows ended up at the bottom every time
-	for _, row in ipairs(scoreboard.registered_scoreboard_rows) do
+	for i = 1, #(scoreboard.registered_scoreboard_rows) do
+		local row = scoreboard.registered_scoreboard_rows[i]
 		if row.name == row_name then
 			function_to_use(row, key_to_edit, other_parameters)
 		end
@@ -299,9 +300,11 @@ local replace_row_with_value = function(row, key_to_edit, value)
 	row[key_to_edit] = value
 end
 
-local replace_value_within_row_table = function(row, key_to_edit, value)
-	for _, i in ipairs(row[key_to_edit]) do
-		if i == value then i = nil end
+local replace_value_within_row_table = function(row, key_to_edit, value, replacing_value)
+	for i = 1, #(row[key_to_edit]) do
+		if row[key_to_edit][i] == value then 
+			row[key_to_edit][i] = replacing_value or nil 
+		end
 	end
 end
 
