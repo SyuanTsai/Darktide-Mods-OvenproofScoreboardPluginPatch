@@ -254,7 +254,7 @@ mod.ammunition = {
     loc_pickup_deployable_ammo_crate_01 = "crate",
     loc_pickup_consumable_small_grenade_01 = "grenades",
     -- Expeditions
-    --  These count as Ammunition
+    --  The purchasable grenade/strafing things. These count as Ammunition
     loc_game_mode_expedition_pickup_price_desc = "expedition_pocketable",
 }
 -- scripts/settings/pickup/pickups/consumable large_clip_pickup and small_clip_pickup
