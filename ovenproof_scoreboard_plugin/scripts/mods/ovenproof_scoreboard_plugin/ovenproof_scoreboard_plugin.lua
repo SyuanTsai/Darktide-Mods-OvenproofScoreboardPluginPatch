@@ -789,6 +789,7 @@ function mod.on_all_mods_loaded()
 					if type == "pull_up" or type == "remove_net" then
 						scoreboard:update_stat("total_operatives_helped", account_id, 1)
 					elseif type == "revive" then
+						mod:echo(">> reviver's account_id (from interaction): "..tostring(account_id))
 						scoreboard:update_stat("total_operatives_revived", account_id, 1)
 					elseif type == "rescue" then
 						scoreboard:update_stat("total_operatives_rescued", account_id, 1)
@@ -797,6 +798,223 @@ function mod.on_all_mods_loaded()
 			end
 		end
 		func(self, result, ...)
+	end)
+
+	-- ######
+	-- Defense: Helping Allies
+	-- 	Tracks Servo Skull revives
+	-- ######
+	-- lol no
+	--[[
+	mod:hook(CLASS.CompanionServoSkullAbility, "start_inject_ally_ability", function(companion_unit, target_finder_component, position_finder_component, ability_extension, is_server, ...)
+		mod:echo("injecting ally")
+	end)
+	]]
+	--  never played
+	--[[
+	mod:hook_require("scripts/extension_systems/behavior/nodes/actions/bt_inject_syringe", function(instance)
+		mod:hook(instance, "_revive_ally_if_needed", function(self, owner_player, target_ally, scratchpad, t, ...)
+			mod:echo("injecting ally 3")
+			if owner_player then
+				mod:echo(">> owner_player: "..tostring(owner_player))
+			end
+			if target_ally then
+				mod:echo(">> target_ally: "..tostring(target_ally))
+			end
+		end)
+	end)
+	mod:hook_require("scripts/extension_systems/interaction/interactions/revive_interaction", function(instance)
+		mod:hook_safe(instance, "stop", function(self, world, interactor_unit, unit_data_component, t, result, interactor_is_server, ...)
+			mod:echo("ally revive direct")
+			if result == interaction_results.success then
+				local target_unit = unit_data_component.target_unit
+				if interactor_unit then
+					mod:echo(">> interactor_unit: "..tostring(interactor_unit))
+				end
+				if target_unit then
+					mod:echo(">> target_unit: "..tostring(target_unit))
+				end
+				
+			end
+		end)
+	end)
+	mod:hook_require("scripts/extension_systems/interaction/interactions/assist_base_interaction", function(instance)
+		mod:hook(instance, "_record_stats_and_telemetry", function(self, interactor_unit, target_unit, stat_id, from_state_name, ...)
+			mod:echo("ally revived")
+			local player_unit_spawn_manager = Managers.state.player_unit_spawn
+			local interactor_player = player_unit_spawn_manager:owner(interactor_unit)
+			local target_player = player_unit_spawn_manager:owner(target_unit)
+			if interactor_player then
+				mod:echo(">> interactor_player: "..tostring(interactor_player))
+			end
+			if target_player then
+				mod:echo(">> target_player: "..tostring(target_player))
+			end
+		end)
+	end)
+	-- Only tells you one of the players
+	mod:hook_require("scripts/foundation/managers/player/player_manager", function(instance)
+		mod:hook(instance, "rpc_player_assisted", function(self, channel_id, peer_id, assist_type_lookup, ...)
+			local assist_type = NetworkLookup.assist_type_lookup[assist_type_lookup]
+			if reviver_player then
+				mod:echo(">> reviver_player: "..tostring(reviver_player))
+			end
+			if revivee_player then
+				mod:echo(">> revivee_player: "..tostring(revivee_player))
+			end
+		end)
+	end)
+	]]
+
+	-- Only worked for player, not allies
+	--[[
+	mod:hook_require("scripts/utilities/companion/companion_servo_skull_ability", function(instance)
+		mod:hook(instance, "start_inject_ally_ability", function(companion_unit, target_finder_component, position_finder_component, ability_extension, is_server, ...)
+			mod:echo("injecting ally 2")
+		end)
+	end)
+	]]
+	
+	-- Works for skull. would have to replace the other one
+	-- Seems to mainly work when it's the player doing it. and is inconsistent in online matches
+	--[[
+	mod:hook_require("scripts/managers/telemetry/telemetry_events", function(instance)
+		mod:hook(instance, "player_revived_ally", function(self, reviver_player, revivee_player, reviver_position, revivee_position, state_name, revived_by_servo_skull, ...)
+			mod:echo("ally revived from telemetry")
+
+			if reviver_player then
+				mod:echo(">> reviver_player: "..tostring(reviver_player))
+			end
+			if revivee_player then
+				mod:echo(">> revivee_player: "..tostring(revivee_player))
+			end
+		end)
+	end)
+	]]
+
+	-- ######
+	-- Defense: Helping Allies
+	-- 	Tracks VoC revives
+	-- ######
+	-- didn't work
+	--[[
+	mod:hook_require("scripts/utilities/shout_ability", function(instance)
+		-- This is a local function in that file
+		mod:hook(instance, "_handle_allied_targets", function(t, radius, target_settings, player_unit, locomotion_component, player_side, player_buff_extension, backup_position, backup_rotation, external_power_modifier, ...)
+			mod:echo("voc targetted ally ally")
+
+			if revive_allies and talent_extension then
+				mod:echo("voc variables exist")
+			end
+		end)
+	end)
+	]]
+	--[[
+	function mod.veteran_shout_handle_allies_copy(t, radius, target_settings, player_unit, locomotion_component, player_side, player_buff_extension, backup_position, backup_rotation, external_power_modifier)
+		if not target_settings then
+			return
+		end
+
+		if not player_side then
+			return
+		end
+
+		local player_position = locomotion_component and locomotion_component.position or backup_position
+		local player_stat_buffs = player_buff_extension:stat_buffs()
+		local buff_to_add = target_settings.buff_to_add
+		local talent_extension = ScriptUnit.has_extension(player_unit, "talent_system")
+		local shout_restores_toughness = talent_extension:has_special_rule(special_rules.shout_restores_toughness) or target_settings.shout_restores_toughness
+
+		if buff_to_add or shout_restores_toughness then
+			local coherency_extension = ScriptUnit.has_extension(player_unit, "coherency_system")
+			local in_coherence_units = coherency_extension:in_coherence_units()
+
+			for unit, _ in pairs(in_coherence_units) do
+				if ALIVE[unit] then
+					if buff_to_add then
+						local buff_extension = ScriptUnit.extension(unit, "buff_system")
+
+						if buff_extension then
+							buff_extension:add_internally_controlled_buff(buff_to_add, t, "owner_unit", player_unit)
+						end
+					end
+
+					if shout_restores_toughness then
+						local unit_data_extension = ScriptUnit.has_extension(unit, "unit_data_system")
+						local breed = unit_data_extension and unit_data_extension:breed()
+
+						if Breed.is_player(breed) then
+							local recover_toughness_effect = target_settings.recover_toughness_effect
+
+							if recover_toughness_effect then
+								local fx_extension = ScriptUnit.extension(unit, "fx_system")
+
+								fx_extension:spawn_exclusive_particle(recover_toughness_effect, Vector3(0, 0, 1))
+							end
+
+							local toughness_percent = target_settings.toughness_replenish_percent or 1
+
+							Toughness.replenish_percentage(unit, toughness_percent, nil, "ability_shout")
+						end
+					end
+				end
+			end
+		end
+
+		local revive_allies = target_settings.revive_allies
+
+		if revive_allies and talent_extension then
+			local allied_side_names = player_side:relation_side_names("allied")
+			local broadphase_system = Managers.state.extension:system("broadphase_system")
+			local broadphase = broadphase_system.broadphase
+			local radius_modifier = player_stat_buffs.shout_radius_modifier or 1
+			local radius_to_use = radius * radius_modifier
+
+			table.clear(broadphase_results)
+
+			local num_hits = broadphase.query(broadphase, player_position, radius_to_use, broadphase_results, allied_side_names, PLAYER_BREED_TYPE)
+
+			for ii = 1, num_hits do
+				local unit = broadphase_results[ii]
+				local revive_special_rule = special_rules.shout_revives_allies
+				local has_special_rule = talent_extension:has_special_rule(revive_special_rule)
+
+				if has_special_rule then
+					local unit_data_extension = ScriptUnit.has_extension(unit, "unit_data_system")
+					local character_state_component = unit_data_extension and unit_data_extension:read_component("character_state")
+
+					if character_state_component and PlayerUnitStatus.is_knocked_down(character_state_component) then
+						local assisted_state_input_component = unit_data_extension:write_component("assisted_state_input")
+
+						assisted_state_input_component.force_assist = true
+
+						if ALIVE[unit] then
+							PlayerAssistNotifications.show_notification(unit, player_unit, "saved")
+						end
+					end
+				end
+			end
+		end
+	end
+	]]
+	mod:hook_require("scripts/utilities/player_assist_notifications", function(instance)
+		mod:hook(instance, "show_notification", function(assisted_unit, assisting_unit, assist_type, ...)
+			mod:echo("(notifications) Ally was saved")
+
+			if assisting_player then
+				mod:echo(">> Assisting player already exists. Trying to cheat and reuse variables lol.\n"..tostring(peer_id).." saved "..tostring(assisted_player_channel_id))
+			end
+			if assisted_unit and assisting_unit then
+				local assisting_player = Managers.state.player_unit_spawn:owner(assisting_unit)
+				if not assisting_player then return end
+
+				local assisting_player_id = assisting_player:peer_id()
+				local assisted_player = Managers.state.player_unit_spawn:owner(assisted_unit)
+				local assisted_player_id = assisted_player:channel_id()
+
+				mod:echo(">> "..tostring(assisting_player_id).." saved "..tostring(assisted_player_id))
+			end
+		end)
 	end)
 
 	-- ############
