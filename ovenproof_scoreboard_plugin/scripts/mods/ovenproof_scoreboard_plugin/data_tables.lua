@@ -72,12 +72,12 @@ mod.skip = {
 -- ------------
 -- Damage Types
 -- ------------
-mod.melee_attack_types ={
+mod.melee_attack_types = {
     "melee",
     "push",
     -- "buff", -- regular Shock Maul and Arbites power maul stun intervals. also covers warp and bleed so don't use lol
 }
-mod.melee_damage_profiles ={
+mod.melee_damage_profiles = {
     -- "shockmaul_stun_interval_damage", -- shock maul electrocution and Arbites dog shocks. dog shock is more important imo so I put it there
     "powermaul_p2_stun_interval",
     "powermaul_p2_stun_interval_basic",
@@ -85,12 +85,12 @@ mod.melee_damage_profiles ={
     "powermaul_p3_arc_chain_lightning_link_damage", -- Skitarii arc maul jumps
     "chain_lightning_killing_blow",
 }
-mod.ranged_attack_types ={
+mod.ranged_attack_types = {
     "ranged",
     "explosion",
     "shout",
 }
-mod.ranged_damage_profiles ={
+mod.ranged_damage_profiles = {
     "shock_grenade_stun_interval",
     "psyker_protectorate_spread_chain_lightning_interval",
     "default_chain_lighting_interval",
@@ -104,10 +104,10 @@ mod.ranged_damage_profiles ={
     "arc_grenade_chain_jump_damage", -- Skitarii Arc Grenade. Putting it here as a fallback for if not tracking blitz
     "force_field_chain_jump_damage", -- Skitarii Integrated Refraction Emitter with Voltaic Resistance. Fallback if not tracking Blitz
 }
-mod.blitz_attack_types ={
+mod.blitz_attack_types = {
 	"psyker_test",
 }
-mod.blitz_damage_profiles ={
+mod.blitz_damage_profiles = {
 	"psyker_smite_kill",
 	"psyker_protectorate_channel_chain_lightning_activated",
 	"psyker_protectorate_spread_chain_lightning_interval",
@@ -156,10 +156,10 @@ mod.blitz_damage_profiles ={
 }
 -- Dog damage doesn't count as melee/ranged for penances
 --	but the shock bomb collar counts for puncture, which is covered by "explosion" being in ranged_attack_types
-mod.companion_attack_types ={
+mod.companion_attack_types = {
     "companion_dog", -- covers the breed_pounce types
 }
-mod.companion_damage_profiles ={
+mod.companion_damage_profiles = {
     "adamant_companion_initial_pounce", -- never seen it come up but it's in the code
     -- "adamant_companion_human_pounce",
     -- "adamant_companion_ogryn_pounce",
@@ -171,11 +171,11 @@ mod.companion_damage_profiles ={
     "companion_servo_skull_flamer",
 }
 
-mod.bleeding_damage_profiles ={
+mod.bleeding_damage_profiles = {
     "bleeding",
     "psyker_stun", -- Mortis Trials psyker bleed
 }
-mod.burning_damage_profiles ={
+mod.burning_damage_profiles = {
     "burning",
     "flame_grenade_liquid_area_fire_burning",
     "liquid_area_fire_burning_barrel",
@@ -183,7 +183,7 @@ mod.burning_damage_profiles ={
     --"flamer_assault", -- Flaming shots from PBB. False bug report: this just uses "burning"
     "phosphor_burning", -- phosphor burns from pistol and servo skull blitz. can't distinguish between the two so here it goes.
 }
-mod.warpfire_damage_profiles ={
+mod.warpfire_damage_profiles = {
     "warpfire",
 }
 mod.electrocution_damage_profiles = {
