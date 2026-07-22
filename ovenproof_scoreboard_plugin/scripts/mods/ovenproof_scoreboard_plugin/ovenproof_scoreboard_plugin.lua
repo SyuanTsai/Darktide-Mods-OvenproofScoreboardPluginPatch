@@ -208,7 +208,7 @@ end
 mod.replace_key_to_edit = function(self, row_name, account_id, value)
 	local row = scoreboard:get_scoreboard_row(row_name)
 	if row then
-		local validation = row.validation
+		-- local validation = row.validation
 		if tonumber(value) then
 			local value = value and math_max(0, value) or 0
 			row.data = row.data or {}
