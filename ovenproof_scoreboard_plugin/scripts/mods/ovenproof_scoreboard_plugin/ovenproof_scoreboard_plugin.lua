@@ -280,7 +280,7 @@ end
 -- ############
 local function replace_registered_scoreboard_value(row_name, key_to_edit, function_to_use, other_parameters)
 	if not scoreboard then
-		mod:info("scoreboard missing. attempted to change: "..row_name)
+		mod:info("Scoreboard missing. Attempted to change row: "..row_name)
 		return
 	end
 
