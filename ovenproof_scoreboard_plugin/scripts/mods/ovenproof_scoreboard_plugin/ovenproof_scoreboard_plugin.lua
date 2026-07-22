@@ -1319,24 +1319,6 @@ function mod.on_all_mods_loaded()
 					-- ------------------------
 					-- Categorizing which enemy was damaged
 					-- ------------------------
-					--[[
-					-- @Backup158
-					-- TODO maybe this could be a switch
-					-- 	eh that doesn't really work since you can't match the case exactly
-					-- 	and looping would require string operations, which is worse for performance for no real gain
-					for group_name, group_table_data in pairs(mod_enemy_groups) do
-						local group_name_total = string_sub(group_name, "melee_", "")
-
-						if table_array_contains(group_table_data[breed_or_nil.name] then
-							scoreboard:update_stat("total_lesser_damage", account_id, actual_damage)
-							scoreboard:update_stat("melee_lesser_damage", account_id, actual_damage)
-							if attack_result == "died" then
-								scoreboard:update_stat("total_lesser_kills", account_id, 1)
-								scoreboard:update_stat("melee_lesser_kills", account_id, 1)
-							end
-						end
-					end
-					]]
 					if mod_melee_lessers[breed_or_nil.name] then
 						scoreboard:update_stat("total_lesser_damage", account_id, actual_damage)
 						scoreboard:update_stat("melee_lesser_damage", account_id, actual_damage)
