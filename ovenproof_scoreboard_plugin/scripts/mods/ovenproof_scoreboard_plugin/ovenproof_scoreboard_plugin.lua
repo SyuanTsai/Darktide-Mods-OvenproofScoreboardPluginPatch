@@ -745,20 +745,20 @@ function mod.on_all_mods_loaded()
 				self._player_state_tracker[account_id].state = self._player_state_tracker[account_id].state or {}
 				
 				if self._player_state_tracker[account_id].state ~= player_state then
-					if 	(	not table_array_contains(mod_states_disabled, self._player_state_tracker[account_id].state) 
-							and not table_array_contains(mod_states_disabled, player_state) 
+					if 	(	not mod_states_disabled[self._player_state_tracker[account_id].state] 
+							and not mod_states_disabled[player_state] 
 						) and
-						(	not table_array_contains(mod_optional_states_disabled, self._player_state_tracker[account_id].state) 
-							and not table_array_contains(mod_optional_states_disabled, player_state) 
+						(	not mod_optional_states_disabled[self._player_state_tracker[account_id].state]
+							and not mod_optional_states_disabled[player_state] 
 						)
 					then
 						tracked_disabled_players_for_players[account_id] = nil
 					end
 					self._player_state_tracker[account_id].state = player_state
-					if table_array_contains(mod_states_disabled, player_state) then
+					if mod_states_disabled[player_state] then
 						scoreboard:update_stat("total_times_disabled", account_id, 1)
 					-- optionally tracks these disabled states, if enabled
-					elseif table_array_contains(mod_optional_states_disabled, player_state) then
+					elseif mod_optional_states_disabled[player_state] then
 						if mod:get("track_"..player_state) then
 							scoreboard:update_stat("total_times_disabled", account_id, 1)
 						end
@@ -1052,7 +1052,7 @@ function mod.on_all_mods_loaded()
 						scoreboard:update_stat("total_kills", account_id, 1)
 
 						-- killed a disabler while an ally was disabled
-						if table_array_contains(mod_disablers, breed_or_nil.name) then
+						if mod_disablers[breed_or_nil.name] then
 							for k,v in pairs(tracked_disabled_players_for_players) do
 								if v == attacked_unit then
 									scoreboard:update_stat("total_operatives_helped", account_id, 1)
@@ -1091,7 +1091,7 @@ function mod.on_all_mods_loaded()
 					--	Melee
 					-- ------------
 					-- manual exception for companion, due to shared damage profile
-					if table_array_contains(mod_melee_attack_types, attack_type) or (table_array_contains(mod_melee_damage_profiles, damage_profile.name) and not table_array_contains(mod_companion_attack_types, attack_type)) then
+					if mod_melee_attack_types[attack_type] or (mod_melee_damage_profiles[damage_profile.name] and not mod_companion_attack_types[attack_type]) then
 						self._melee_rate = (self._melee_rate or {})
 						self._melee_rate[account_id] = self._melee_rate[account_id] or {}
 						self._melee_rate[account_id].hits = self._melee_rate[account_id].hits or 0
@@ -1126,8 +1126,8 @@ function mod.on_all_mods_loaded()
 					--  Tracks Crit and Weakspot because of Assail and such
 					-- ------------
 					elseif track_blitz_damage 
-					and (table_array_contains(mod_blitz_attack_types, attack_type) 
-						or table_array_contains(mod_blitz_damage_profiles, damage_profile.name)
+					and (mod_blitz_attack_types[attack_type] 
+						or mod_blitz_damage_profiles[damage_profile.name]
 				 		) 
 					then
 						self._blitz_rate = self._blitz_rate or {}
@@ -1161,7 +1161,7 @@ function mod.on_all_mods_loaded()
 					--	Companion
 					--  After Skitarii released, companion overlaps with ranged too
 					-- ------------
-					elseif table_array_contains(mod_companion_attack_types, attack_type) or table_array_contains(mod_companion_damage_profiles, damage_profile.name) then
+					elseif mod_companion_attack_types[attack_type] or mod_companion_damage_profiles[damage_profile.name] then
 						-- Crit and Weakspot rates don't matter
 		
 						-- By default, uses its own companion row, which reads: total_companion_damage and total_companion_kills
@@ -1173,7 +1173,7 @@ function mod.on_all_mods_loaded()
 					-- ------------
 					--	Ranged
 					-- ------------
-					elseif table_array_contains(mod_ranged_attack_types, attack_type) or table_array_contains(mod_ranged_damage_profiles, damage_profile.name) then
+					elseif mod_ranged_attack_types[attack_type] or mod_ranged_damage_profiles[damage_profile.name] then
 						self._ranged_rate = self._ranged_rate or {}
 						self._ranged_rate[account_id] = self._ranged_rate[account_id] or {}
 						self._ranged_rate[account_id].hits = self._ranged_rate[account_id].hits or 0
@@ -1208,7 +1208,7 @@ function mod.on_all_mods_loaded()
 					-- ------------
 					--	Bleed
 					-- ------------
-					elseif table_array_contains(mod_bleeding_damage_profiles, damage_profile.name) then
+					elseif mod_bleeding_damage_profiles[damage_profile.name] then
 						self._bleeding_rate = self._bleeding_rate or {}
 						self._bleeding_rate[account_id] = self._bleeding_rate[account_id] or {}
 						self._bleeding_rate[account_id].hits = self._bleeding_rate[account_id].hits or 0
@@ -1229,7 +1229,7 @@ function mod.on_all_mods_loaded()
 					-- ------------
 					--	Burning
 					-- ------------
-					elseif table_array_contains(mod_burning_damage_profiles, damage_profile.name) then
+					elseif mod_burning_damage_profiles[damage_profile.name] then
 						self._burning_rate = (self._burning_rate or {})
 						self._burning_rate[account_id] = (self._burning_rate[account_id] or {})
 						self._burning_rate[account_id].hits = (self._burning_rate[account_id].hits or 0) + 1
@@ -1249,7 +1249,7 @@ function mod.on_all_mods_loaded()
 					-- ------------
 					--	Warp
 					-- ------------
-					elseif table_array_contains(mod_warpfire_damage_profiles, damage_profile.name) then
+					elseif mod_warpfire_damage_profiles[damage_profile.name] then
 						self._warpfire_rate = (self._warpfire_rate or {})
 						self._warpfire_rate[account_id] = (self._warpfire_rate[account_id] or {})
 						self._warpfire_rate[account_id].hits = (self._warpfire_rate[account_id].hits or 0) + 1
@@ -1269,7 +1269,7 @@ function mod.on_all_mods_loaded()
 					-- ------------
 					--	Toxin
 					-- ------------
-					elseif table_array_contains(mod_toxin_damage_profiles, damage_profile.name) then
+					elseif mod_toxin_damage_profiles[damage_profile.name] then
 						self._toxin_rate = self._toxin_rate or {}
 						self._toxin_rate[account_id] = self._toxin_rate[account_id] or {}
 						self._toxin_rate[account_id].hits = self._toxin_rate[account_id].hits or 0
@@ -1290,7 +1290,7 @@ function mod.on_all_mods_loaded()
 					-- ------------
 					-- 	Environmental
 					-- ------------
-					elseif table_array_contains(mod_environmental_damage_profiles, damage_profile.name) then
+					elseif mod_environmental_damage_profiles[damage_profile.name] then
 						self._environmental_rate = (self._environmental_rate or {})
 						self._environmental_rate[account_id] = (self._environmental_rate[account_id] or {})
 						self._environmental_rate[account_id].hits = (self._environmental_rate[account_id].hits or 0) + 1
@@ -1327,7 +1327,7 @@ function mod.on_all_mods_loaded()
 					for group_name, group_table_data in pairs(mod_enemy_groups) do
 						local group_name_total = string_sub(group_name, "melee_", "")
 
-						if table_array_contains(group_table_data, breed_or_nil.name) then
+						if table_array_contains(group_table_data[breed_or_nil.name] then
 							scoreboard:update_stat("total_lesser_damage", account_id, actual_damage)
 							scoreboard:update_stat("melee_lesser_damage", account_id, actual_damage)
 							if attack_result == "died" then
@@ -1337,49 +1337,49 @@ function mod.on_all_mods_loaded()
 						end
 					end
 					]]
-					if table_array_contains(mod_melee_lessers, breed_or_nil.name) then
+					if mod_melee_lessers[breed_or_nil.name] then
 						scoreboard:update_stat("total_lesser_damage", account_id, actual_damage)
 						scoreboard:update_stat("melee_lesser_damage", account_id, actual_damage)
 						if attack_result == "died" then
 							scoreboard:update_stat("total_lesser_kills", account_id, 1)
 							scoreboard:update_stat("melee_lesser_kills", account_id, 1)
 						end
-					elseif table_array_contains(mod_ranged_lessers, breed_or_nil.name) then
+					elseif mod_ranged_lessers[breed_or_nil.name] then
 						scoreboard:update_stat("total_lesser_damage", account_id, actual_damage)
 						scoreboard:update_stat("ranged_lesser_damage", account_id, actual_damage)
 						if attack_result == "died" then
 							scoreboard:update_stat("total_lesser_kills", account_id, 1)
 							scoreboard:update_stat("ranged_lesser_kills", account_id, 1)
 						end
-					elseif table_array_contains(mod_melee_elites, breed_or_nil.name) then
+					elseif mod_melee_elites[breed_or_nil.name] then
 						scoreboard:update_stat("total_elite_damage", account_id, actual_damage)
 						scoreboard:update_stat("melee_elite_damage", account_id, actual_damage)
 						if attack_result == "died" then
 							scoreboard:update_stat("total_elite_kills", account_id, 1)
 							scoreboard:update_stat("melee_elite_kills", account_id, 1)
 						end
-					elseif table_array_contains(mod_ranged_elites, breed_or_nil.name) then
+					elseif mod_ranged_elites[breed_or_nil.name] then
 						scoreboard:update_stat("total_elite_damage", account_id, actual_damage)
 						scoreboard:update_stat("ranged_elite_damage", account_id, actual_damage)
 						if attack_result == "died" then
 							scoreboard:update_stat("total_elite_kills", account_id, 1)
 							scoreboard:update_stat("ranged_elite_kills", account_id, 1)
 						end
-					elseif table_array_contains(mod_specials, breed_or_nil.name) then
+					elseif mod_specials[breed_or_nil.name] then
 						scoreboard:update_stat("total_special_damage", account_id, actual_damage)
 						scoreboard:update_stat("damage_special_damage", account_id, actual_damage)
 						if attack_result == "died" then
 							scoreboard:update_stat("total_special_kills", account_id, 1)
 							scoreboard:update_stat("damage_special_kills", account_id, 1)
 						end
-					elseif table_array_contains(mod_disablers, breed_or_nil.name) then
+					elseif mod_disablers[breed_or_nil.name] then
 						scoreboard:update_stat("total_special_damage", account_id, actual_damage)
 						scoreboard:update_stat("disabler_special_damage", account_id, actual_damage)
 						if attack_result == "died" then
 							scoreboard:update_stat("total_special_kills", account_id, 1)
 							scoreboard:update_stat("disabler_special_kills", account_id, 1)
 						end
-					elseif table_array_contains(mod_bosses, breed_or_nil.name) then
+					elseif mod_bosses[breed_or_nil.name] then
 						scoreboard:update_stat("total_boss_damage", account_id, actual_damage)
 						scoreboard:update_stat("boss_damage", account_id, actual_damage)
 						if attack_result == "died" then
@@ -1389,7 +1389,7 @@ function mod.on_all_mods_loaded()
 					-- ------------
 					-- 	Error Catching
 					-- ------------
-					elseif table_array_contains(mod_skip, breed_or_nil.name) then
+					elseif mod_skip[breed_or_nil.name] then
 						-- do nothing
 						-- this is so ugly but idc :D
 					else

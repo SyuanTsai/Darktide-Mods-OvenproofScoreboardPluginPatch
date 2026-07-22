@@ -1,6 +1,11 @@
 # 1.13.7 - 2026-06-30
 - Updated `zh-cn` localization. Thanks DingXiang223!
 - Updated `zh-tw` localization. Thanks SyuanTsai!
+- Refactored data tables for faster access
+    - Before, they were all arrays, and finding if something was a value in it was O(n)
+    - Now, the target of the search is the key, so searches can be done in O(1)
+    - Since these searches happen every single time an enemy was hit/killed (and even every frame in the case of health checks), this should improve performance a bit
+    - Plus, it makes it easier to swap things in and out
 - Refactored Scoreboard row access to use index instead of `ipairs` per [Fatshark's Lua optimization recommendations](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=prefer-numeric-for-loops-over-ipairs-to-iterate-over-arrays)
 - Changed `replace_value_within_row_table` to support using a new value instead of nil. Nothing changes functionally currently; this is for the future.
 
