@@ -1001,16 +1001,16 @@ function mod.on_all_mods_loaded()
 		mod:hook(instance, "show_notification", function(assisted_unit, assisting_unit, assist_type, ...)
 			mod:echo("(notifications) Ally was saved")
 
-			if assisting_player then
-				mod:echo(">> Assisting player already exists. Trying to cheat and reuse variables lol.\n"..tostring(peer_id).." saved "..tostring(assisted_player_channel_id))
-			end
 			if assisted_unit and assisting_unit then
 				local assisting_player = Managers.state.player_unit_spawn:owner(assisting_unit)
 				if not assisting_player then return end
 
 				local assisting_player_id = assisting_player:peer_id()
 				local assisted_player = Managers.state.player_unit_spawn:owner(assisted_unit)
-				local assisted_player_id = assisted_player:channel_id()
+				if assisted_player then
+					-- bots dont have id
+					local assisted_player_id = assisted_player:channel_id()
+				end
 
 				mod:echo(">> "..tostring(assisting_player_id).." saved "..tostring(assisted_player_id))
 			end
