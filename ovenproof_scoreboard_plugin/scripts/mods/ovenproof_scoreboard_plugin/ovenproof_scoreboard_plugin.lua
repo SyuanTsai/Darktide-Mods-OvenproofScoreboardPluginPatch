@@ -789,7 +789,7 @@ function mod.on_all_mods_loaded()
 					if type == "pull_up" or type == "remove_net" then
 						scoreboard:update_stat("total_operatives_helped", account_id, 1)
 					elseif type == "revive" then
-						mod:echo(">> reviver's account_id (from interaction): "..tostring(account_id))
+						-- mod:echo(">> reviver's account_id (from interaction): "..tostring(account_id))
 						scoreboard:update_stat("total_operatives_revived", account_id, 1)
 					elseif type == "rescue" then
 						scoreboard:update_stat("total_operatives_rescued", account_id, 1)
@@ -861,6 +861,26 @@ function mod.on_all_mods_loaded()
 			end
 			if revivee_player then
 				mod:echo(">> revivee_player: "..tostring(revivee_player))
+			end
+		end)
+	end)
+	-- Server only
+	mod:hook_require("scripts/utilities/player_assist_notifications", function(instance)
+		mod:hook(instance, "show_notification", function(assisted_unit, assisting_unit, assist_type, ...)
+			mod:echo("(notifications) Ally was saved")
+
+			if assisted_unit and assisting_unit then
+				local assisting_player = Managers.state.player_unit_spawn:owner(assisting_unit)
+				if not assisting_player then return end
+
+				local assisting_player_id = assisting_player:peer_id()
+				local assisted_player = Managers.state.player_unit_spawn:owner(assisted_unit)
+				if assisted_player then
+					-- bots dont have id
+					local assisted_player_id = assisted_player:channel_id()
+				end
+
+				mod:echo(">> "..tostring(assisting_player_id).." saved "..tostring(assisted_player_id))
 			end
 		end)
 	end)
@@ -997,25 +1017,6 @@ function mod.on_all_mods_loaded()
 		end
 	end
 	]]
-	mod:hook_require("scripts/utilities/player_assist_notifications", function(instance)
-		mod:hook(instance, "show_notification", function(assisted_unit, assisting_unit, assist_type, ...)
-			mod:echo("(notifications) Ally was saved")
-
-			if assisted_unit and assisting_unit then
-				local assisting_player = Managers.state.player_unit_spawn:owner(assisting_unit)
-				if not assisting_player then return end
-
-				local assisting_player_id = assisting_player:peer_id()
-				local assisted_player = Managers.state.player_unit_spawn:owner(assisted_unit)
-				if assisted_player then
-					-- bots dont have id
-					local assisted_player_id = assisted_player:channel_id()
-				end
-
-				mod:echo(">> "..tostring(assisting_player_id).." saved "..tostring(assisted_player_id))
-			end
-		end)
-	end)
 
 	-- ############
 	-- Offense
