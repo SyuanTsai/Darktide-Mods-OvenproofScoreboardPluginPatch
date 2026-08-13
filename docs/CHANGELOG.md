@@ -1,3 +1,7 @@
+# 1.13.8 - 2026-08-13
+## Fixed
+- Added arc grenade extra arc, `cryptic_arc_grenade_shock_damage`: Blitz, fallback to Ranged
+
 # 1.13.7 - 2026-08-12
 ## New
 - Added new damage type from Skitarii force field and discharge, `cryptic_arc_shock_damage`: Ranged
