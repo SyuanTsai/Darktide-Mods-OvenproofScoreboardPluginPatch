@@ -1,8 +1,8 @@
 local mod = get_mod("ovenproof_scoreboard_plugin")
 
--- ------------
+-- ==============================================================
 -- Enemy Breeds
--- ------------
+-- ==============================================================
 mod.melee_lessers = {
     ["chaos_newly_infected"] = true,
     ["chaos_poxwalker"] = true,
@@ -69,9 +69,9 @@ mod.skip = {
     ["cultist_ritualist"] = true,
     -- what the fuck is "nurgle_flies" (@Backup158: It's an expeditions thing)
 }
--- ------------
+-- ==============================================================
 -- Damage Types
--- ------------
+-- ==============================================================
 mod.melee_attack_types = {
     ["melee"] = true,
     ["push"] = true,
@@ -227,9 +227,9 @@ mod.environmental_damage_profiles = {
     ["poxwalker_bomber_instakill"] = true,
 }
 
--- ------------
+-- ==============================================================
 -- Other Stats
--- ------------
+-- ==============================================================
 mod.states_disabled = {
     ["consumed"] = true, -- Beast of Nurgle vore
     ["grabbed"] = true, -- Chaos Spawn
