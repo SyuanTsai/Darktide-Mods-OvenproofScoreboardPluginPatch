@@ -1,5 +1,6 @@
-# 1.13.7 - 2026-06-30
+# 1.13.7 - 2026-08-12
 ## New
+- Added new damage type from Skitarii force field and discharge, `cryptic_arc_shock_damage`: Ranged
 - Updated `zh-cn` localization. Thanks DingXiang223!
 - Updated `zh-tw` localization. Thanks SyuanTsai!
 ## Changed

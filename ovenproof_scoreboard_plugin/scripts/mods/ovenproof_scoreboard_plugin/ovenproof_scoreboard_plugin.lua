@@ -888,13 +888,89 @@ function mod.on_all_mods_loaded()
 
 	-- Only worked for player, not allies
 	--[[
+	-- ty Wobin
 	mod:hook_require("scripts/utilities/companion/companion_servo_skull_ability", function(instance)
 		mod:hook(instance, "start_inject_ally_ability", function(companion_unit, target_finder_component, position_finder_component, ability_extension, is_server, ...)
-			mod:echo("injecting ally 2")
+			mod:echo("Injecting ally: start_inject_ally_ability")
+			mod:echo("target_finder_component is a "..type(target_finder_component))
+			if target_finder_component.target_unit_1 then
+				mod:echo("target_finder_component.target_unit_1 is a "..type(target_finder_component.target_unit_1))
+			end
+			local ally = target_finder_component
+			if not ally then
+				mod:echo("No target")
+				return
+			end
+
+			local companion_injecting = companion_unit
+			if not companion_injecting then
+				mod:echo("Nobody wants to inject :(")
+				return
+			end
+			
+			local all_players = Managers.player:players()
+			for _, player in pairs(all_players) do
+				local player_unit = player.player_unit
+				if player_unit and ALIVE[player_unit] then
+					local spawner_ext = ScriptUnit.has_extension(player_unit, "companion_spawner_system")
+					if spawner_ext then
+						-- Identify companions
+						local companions = {}
+						if spawner_ext._spawned_units then
+							for _, u in ipairs(spawner_ext._spawned_units) do
+								table.insert(companions, u)
+							end
+						end
+						local SpecialRules = require("scripts/settings/ability/special_rules_settings").special_rules
+						if SpecialRules and spawner_ext.spawned_unit_lookup then
+							local rules = {
+								"cryptic_servo_skull",
+								"cryptic_servo_skull_lasgun",
+								"cryptic_servo_skull_flamethrower",
+								"cryptic_servo_skull_hack",
+								"cryptic_servo_skull_inject_ally"
+							}
+							for _, rule_name in ipairs(rules) do
+								local success, rule = pcall(function() return SpecialRules[rule_name] end)
+								if success and rule then
+									local u = spawner_ext:spawned_unit_lookup(rule)
+									if u then table.insert(companions, u) end
+								end
+							end
+						end
+						for _, spawned_unit in ipairs(companions) do
+							if spawned_unit == companion_injecting then
+								if type(player) == "table" then
+									table.dump(table, "Player with companion owo", 10)
+								end
+								mod:echo("player with companion injecting xddd "..tostring(player))
+							end
+						end
+
+						table.dump(companions, "All companions owo", 10)
+					end
+				end
+			end
+			
+			--local unit = self._interactor_unit
+			--if unit then
+			--	local player = Managers.player:player_by_unit(unit)
+			--	if player then
+			--		local account_id = player:account_id() or player:name()
+			--		if type == "pull_up" or type == "remove_net" then
+			--			scoreboard:update_stat("total_operatives_helped", account_id, 1)
+			--		elseif type == "revive" then
+			--			mod:echo(">> reviver's account_id (from interaction): "..tostring(account_id))
+			--			scoreboard:update_stat("total_operatives_revived", account_id, 1)
+			--		elseif type == "rescue" then
+			--			scoreboard:update_stat("total_operatives_rescued", account_id, 1)
+			--		end
+			--	end
+			--end
 		end)
 	end)
 	]]
-	
+
 	-- Works for skull. would have to replace the other one
 	-- Seems to mainly work when it's the player doing it. and is inconsistent in online matches
 	--[[

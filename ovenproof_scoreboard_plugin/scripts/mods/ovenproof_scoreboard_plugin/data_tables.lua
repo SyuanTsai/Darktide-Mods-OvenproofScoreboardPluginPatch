@@ -103,6 +103,7 @@ mod.ranged_damage_profiles = {
     ["discharge_chain_jump_damage"] = true,
     ["arc_grenade_chain_jump_damage"] = true, -- Skitarii Arc Grenade. Putting it here as a fallback for if not tracking blitz
     ["force_field_chain_jump_damage"] = true, -- Skitarii Integrated Refraction Emitter with Voltaic Resistance. Fallback if not tracking Blitz
+    ["cryptic_arc_shock_damage"] = true, -- Skitarii force field arc and discharge arc. I don't have an option to track electrocution separately.
 }
 mod.blitz_attack_types = {
     ["psyker_test"] = true,
@@ -201,6 +202,7 @@ mod.electrocution_damage_profiles = {
     ["arc_rifle_arc_chain_lightning_link_damage"] = true,
     ["chain_lightning_killing_blow"] = true,
     ["force_field_chain_jump_damage"] = true, -- Skitarii Integrated Refraction Emitter with Voltaic Resistance
+    ["cryptic_arc_shock_damage"] = true, -- Skitarii force field arc and discharge arc
 }
 mod.toxin_damage_profiles = {
     ["toxin_variant_1"] = true,	
